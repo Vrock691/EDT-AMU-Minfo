@@ -33,5 +33,5 @@ func StartPeriodicFetching() {
 }
 
 func generateURL() string {
-	return "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=1819&calType=ical&firstDate=" + time.Now().Format("2006-01-02") + "&lastDate=2026-09-19"
+	return "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=1819&calType=ical&firstDate=" + time.Now().AddDate(0, 0, -7).Format("2006-01-02") + "&lastDate=2026-09-19"
 }
