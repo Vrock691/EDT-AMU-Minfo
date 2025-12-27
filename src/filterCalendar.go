@@ -62,6 +62,42 @@ func filterCalendar(mentions []Mention, groups []Group, options []Option, option
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_PROBA_POUR_INFORMATIQUE)
 		case "securite-des-apps":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_SECURITE_DES_APPS)
+		case "adon":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ANALYSE_DES_DONNEES)
+		case "asr":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ALGORITHMES_ET_SYSTEMES_ROBUSTES)
+		case "iq":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_INFORMATIQUE_QUANTIQUE)
+		case "tdc":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_THEORIE_DE_LA_COMPLEXITE)
+		case "fl":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_FIABILITE_LOGICIELLE)
+		case "baa":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_BASES_DE_APPRENTISSAGE_ARTIFICIEL)
+		case "ihm":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_INTERFACE_HUMAIN_MACHINE)
+		case "gla":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_GENIE_LOGICIEL_AVANCE)
+		case "pgra":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_PROGRAMMATION_GRAPHIQUE)
+		case "apro":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ANALYSE_DE_PROGRAMMES)
+		case "mgm":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_MODELISATION_GEOMETRIQUE_ET_MAILLAGES)
+		case "tal":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_TRAITEMENT_AUTOMATIQUE_DES_LANGUES)
+		case "apg":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ALGORITHMES_A_PERFORMANCES_GARANTIES)
+		case "cloud":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_DES_CONTENEURS_AU_CLOUD)
+		case "idd":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_INTEGRATION_DES_DONNEES)
+		case "tsg":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_THEORIE_STRUCTURELLE_DES_GRAPHES)
+		case "calc":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_CALCULABILITE_AVANCEE)
+		case "mrd":
+			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_MODELISATION_ET_RESOLUTION_POUR_LA_DECISION)
 		}
 	}
 
