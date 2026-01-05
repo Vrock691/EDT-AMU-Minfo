@@ -66,8 +66,8 @@ var groupToRegexMap = map[Group]string{
 	"TD2": " TD2| TD Gr2| TD 2",
 	"TD3": " TD3| TD Gr3| TP 3",
 	"TD4": " TD4| TD Gr4| TD 4",
-	"TP1": " TP1| TP Gr1| TP 1(?! " + CODE_GENIE_LOGICIEL_AVANCE + ")",
-	"TP2": " TP2| TP Gr2| TP 2(?! " + CODE_GENIE_LOGICIEL_AVANCE + ")",
+	"TP1": " TP1| TP Gr1| TP 1",
+	"TP2": " TP2| TP Gr2| TP 2",
 	"TP3": " TP3| TP Gr3| TP 3",
 	"TP4": " TP4| TP Gr4| TP 4",
 }
