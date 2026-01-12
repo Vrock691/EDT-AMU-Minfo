@@ -128,6 +128,13 @@ func filterCalendar(mentions []Mention, groups []Group, options []Option, option
 	for _, event := range cal.Events() {
 		if event.GetProperty(ics.ComponentProperty(ics.PropertySummary)) != nil {
 			summary := event.GetProperty(ics.ComponentProperty(ics.PropertySummary)).Value
+
+			// Handle special case for GLA
+			GLAregex, _ := regexp.Compile("TP [12] SINBU33DL: Genie logiciel avance")
+			if GLAregex.MatchString(summary) {
+				summary = strings.Replace(summary, "TP", "GRP", 1)
+			}
+
 			if !regex.MatchString(summary) {
 				// Keep this event (it doesn't match the removal pattern)
 				filteredCal.AddVEvent(event)

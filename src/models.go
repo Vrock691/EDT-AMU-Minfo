@@ -35,7 +35,7 @@ const CODE_DES_CONTENEURS_AU_CLOUD string = "SINB34B"
 const CODE_COMMUNICATION_SCIENTIFIQUE_ET_PROFESSIONNELLE string = "SINB33F"
 const CODE_EXPLORATION_DES_DONNEES string = "SINB49A"
 const CODE_FIABILITE_LOGICIELLE string = "SINB34A"
-const CODE_GENIE_LOGICIEL_AVANCE string = "SINB33D"
+const CODE_GENIE_LOGICIEL_AVANCE string = "SINBU33DL"
 const CODE_INTEGRATION_DES_DONNEES string = "SINB44A"
 const CODE_INTERFACE_HUMAIN_MACHINE string = "SINB38B"
 const CODE_INFORMATIQUE_QUANTIQUE string = "SINB33A"
@@ -96,8 +96,8 @@ var optionGroupNumberToRegexMap = map[string]string{
 	"G2":     " G2",
 	"FL1":    " Fiabilité logicielle Gpr 1",
 	"FL2":    " Fiabilité logicielle Gpr 2",
-	"GL1":    "^TP 1 " + CODE_GENIE_LOGICIEL_AVANCE,
-	"GL2":    "^TP 2 " + CODE_GENIE_LOGICIEL_AVANCE,
+	"GL1":    "GRP 1 " + CODE_GENIE_LOGICIEL_AVANCE,
+	"GL2":    "GRP 2 " + CODE_GENIE_LOGICIEL_AVANCE,
 	"TAA1":   " Traitement automatique des langues Grp 1",
 	"TAA2":   " Traitement automatique des langues Grp 2",
 	"CLOUD1": " principes et administration Grp 1",
