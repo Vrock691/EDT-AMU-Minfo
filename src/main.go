@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 
 	ics "github.com/arran4/golang-ical"
 )
@@ -42,8 +43,24 @@ func main() {
 		var optionGroups []OptionGroup
 		json.Unmarshal([]byte(query.Get("optionGroups")), &optionGroups)
 
+		var startDate, errStartDate = time.Parse("2006-01-02", query.Get("startDate"))
+		if errStartDate != nil {
+			startDate = time.Date(2025, time.September, 1, 0, 0, 0, 0, time.Local)
+		}
+
+		var endDate, errEndDate = time.Parse("2006-01-02", query.Get("endDate"))
+		if errEndDate != nil {
+			endDate = time.Date(2026, time.August, 1, 0, 0, 0, 0, time.Local)
+		}
+
 		// Get the filtered calendar
-		filteredCal := filterCalendar(mentions, groups, options, optionGroups)
+		filteredCal := filterCalendar(
+			mentions,
+			groups,
+			options,
+			optionGroups,
+			startDate,
+			endDate)
 
 		// Return the ics file to the user
 		w.Header().Set("Content-Type", "text/calendar; charset=utf-8")

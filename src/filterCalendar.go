@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"time"
 
 	ics "github.com/arran4/golang-ical"
 )
@@ -11,7 +12,13 @@ import (
 /*
 Filters the calendar events based on the selected mentions, groups, options, and option groups
 */
-func filterCalendar(mentions []Mention, groups []Group, options []Option, optionGroups []OptionGroup) ics.Calendar {
+func filterCalendar(
+	mentions []Mention,
+	groups []Group,
+	options []Option,
+	optionGroups []OptionGroup,
+	startDate time.Time,
+	endDate time.Time) ics.Calendar {
 
 	// Create a regex expression to remove undesired events
 	var eventToRemoveRegex []string
@@ -126,6 +133,11 @@ func filterCalendar(mentions []Mention, groups []Group, options []Option, option
 
 	// Add only events that should NOT be removed
 	for _, event := range cal.Events() {
+		var t, err = event.GetStartAt()
+		if err != nil || !(t.Equal(startDate) || t.After(startDate)) && (t.Equal(endDate) || t.Before(endDate)) {
+			continue
+		}
+
 		if event.GetProperty(ics.ComponentProperty(ics.PropertySummary)) != nil {
 			summary := event.GetProperty(ics.ComponentProperty(ics.PropertySummary)).Value
 
