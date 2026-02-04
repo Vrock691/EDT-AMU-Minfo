@@ -43,11 +43,11 @@ func main() {
 		var optionGroups []OptionGroup
 		json.Unmarshal([]byte(query.Get("optionGroups")), &optionGroups)
 
+		// Get the start/end dates selected by the user
 		var startDate, errStartDate = time.Parse("2006-01-02", query.Get("startDate"))
 		if errStartDate != nil {
 			startDate = time.Date(2025, time.September, 1, 0, 0, 0, 0, time.Local)
 		}
-
 		var endDate, errEndDate = time.Parse("2006-01-02", query.Get("endDate"))
 		if errEndDate != nil {
 			endDate = time.Date(2026, time.August, 1, 0, 0, 0, 0, time.Local)

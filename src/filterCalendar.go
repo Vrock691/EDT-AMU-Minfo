@@ -135,7 +135,7 @@ func filterCalendar(
 	for _, event := range cal.Events() {
 		var t, err = event.GetStartAt()
 		if err != nil || !(t.Equal(startDate) || t.After(startDate)) && (t.Equal(endDate) || t.Before(endDate)) {
-			continue
+			continue // Only filter events which starts between the dates selected by the user
 		}
 
 		if event.GetProperty(ics.ComponentProperty(ics.PropertySummary)) != nil {
