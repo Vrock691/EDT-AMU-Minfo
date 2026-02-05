@@ -47,11 +47,15 @@ func main() {
 		var startDate, errStartDate = time.Parse("2006-01-02", query.Get("startDate"))
 		if errStartDate != nil {
 			startDate = time.Date(2025, time.September, 1, 0, 0, 0, 0, time.Local)
+			print(errStartDate)
 		}
 		var endDate, errEndDate = time.Parse("2006-01-02", query.Get("endDate"))
 		if errEndDate != nil {
 			endDate = time.Date(2026, time.August, 1, 0, 0, 0, 0, time.Local)
+			print(errStartDate)
 		}
+
+		print(startDate, endDate)
 
 		// Get the filtered calendar
 		filteredCal := filterCalendar(
@@ -70,5 +74,5 @@ func main() {
 
 	// Start the http server
 	fmt.Println("Starting HTTP server on :8080")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":3000", nil)
 }
