@@ -73,6 +73,6 @@ func main() {
 	})
 
 	// Start the http server
-	fmt.Println("Starting HTTP server on :8080")
-	http.ListenAndServe("localhost:8080", nil)
+	fmt.Println("Starting HTTP server on :10000")
+	http.ListenAndServe(":10000", nil)
 }
