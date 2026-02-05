@@ -133,8 +133,8 @@ func filterCalendar(
 
 	// Add only events that should NOT be removed
 	for _, event := range cal.Events() {
-		var t, err = event.GetStartAt()
-		if err != nil || !(t.Equal(startDate) || t.After(startDate)) && (t.Equal(endDate) || t.Before(endDate)) {
+		var start, err = event.GetStartAt()
+		if err != nil || start.Before(startDate) || start.After(endDate.AddDate(0, 0, 1)) {
 			continue // Only filter events which starts between the dates selected by the user
 		}
 

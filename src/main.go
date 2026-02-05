@@ -55,7 +55,7 @@ func main() {
 			print(errStartDate)
 		}
 
-		print(startDate, endDate)
+		print(startDate.String(), endDate.String())
 
 		// Get the filtered calendar
 		filteredCal := filterCalendar(
@@ -74,5 +74,5 @@ func main() {
 
 	// Start the http server
 	fmt.Println("Starting HTTP server on :8080")
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe("localhost:8080", nil)
 }
