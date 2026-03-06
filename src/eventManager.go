@@ -44,8 +44,9 @@ func addCustomEvent() {
 	event.SetDtStampTime(time.Now())
 	event.SetModifiedAt(time.Now())
 
-	event.SetStartAt(time.Date(2026, 4, 10, 0, 0, 0, 0, time.UTC))
-	event.SetEndAt(time.Date(2026, 4, 10, 23, 59, 59, 59, time.UTC))
+	event.SetStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.UTC))
+	event.SetAllDayStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.UTC))
+	event.SetEndAt(time.Date(2026, 4, 10, 23, 59, 59, 0, time.UTC))
 	event.SetSummary("Merci d'avoir utilisé mon script !")
 	event.SetDescription("Merci d'avoir utilisé mon script !")
 	event.SetURL("https://vamary.fr/")
