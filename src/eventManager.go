@@ -44,9 +44,8 @@ func addCustomEvent() {
 	event.SetDtStampTime(time.Now())
 	event.SetModifiedAt(time.Now())
 
-	event.SetStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.FixedZone("Europe/Paris", 0)))
-	event.SetAllDayStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.FixedZone("Europe/Paris", 0)))
-	event.SetEndAt(time.Date(2026, 4, 10, 23, 59, 59, 0, time.FixedZone("Europe/Paris", 0)))
+	event.SetStartAt(time.Date(2026, time.May, 1, 10, 0, 0, 0, time.FixedZone("Europe/Paris", 0)))
+	event.SetEndAt(time.Date(2026, time.May, 1, 18, 0, 0, 0, time.FixedZone("Europe/Paris", 0)))
 	event.SetSummary("Merci d'avoir utilisé mon script !")
 	event.SetDescription("Met une star sur Github !\nhttps://github.com/Vrock691/EDT-AMU-Minfo")
 	event.SetURL("https://vamary.fr/")
