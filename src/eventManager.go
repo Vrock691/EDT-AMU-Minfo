@@ -44,11 +44,11 @@ func addCustomEvent() {
 	event.SetDtStampTime(time.Now())
 	event.SetModifiedAt(time.Now())
 
-	event.SetStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.UTC))
-	event.SetAllDayStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.UTC))
-	event.SetEndAt(time.Date(2026, 4, 10, 23, 59, 59, 0, time.UTC))
+	event.SetStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.FixedZone("Europe/Paris", 0)))
+	event.SetAllDayStartAt(time.Date(2026, time.April, 10, 0, 0, 0, 0, time.FixedZone("Europe/Paris", 0)))
+	event.SetEndAt(time.Date(2026, 4, 10, 23, 59, 59, 0, time.FixedZone("Europe/Paris", 0)))
 	event.SetSummary("Merci d'avoir utilisé mon script !")
-	event.SetDescription("Merci d'avoir utilisé mon script !")
+	event.SetDescription("Met une star sur Github !\nhttps://github.com/Vrock691/EDT-AMU-Minfo")
 	event.SetURL("https://vamary.fr/")
 	event.SetOrganizer("valentin.mary@proton.me", ics.WithCN("Valentin Mary"))
 }
