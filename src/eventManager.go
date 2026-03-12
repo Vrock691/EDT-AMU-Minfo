@@ -16,21 +16,21 @@ func StartPeriodicFetching() {
 	// Fetch immediately
 	fmt.Println("Fetching calendar...")
 	cal, err = ics.ParseCalendarFromUrl(generateURL())
-	addCustomEvent()
 	if err != nil {
 		fmt.Println("Error fetching calendar:", err)
 		return
 	}
+	addCustomEvent()
 
 	// Then fetch every hour
 	for range ticker.C {
 		fmt.Println("Fetching calendar...")
 		cal, err = ics.ParseCalendarFromUrl(generateURL())
-		addCustomEvent()
 		if err != nil {
 			fmt.Println("Error fetching calendar:", err)
 			continue
 		}
+		addCustomEvent()
 	}
 }
 
