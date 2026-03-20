@@ -23,8 +23,8 @@ const CODE_SECURITE_DES_APPS string = "SINA10A"
 const CODE_GESTION_PROJETS string = "SINA11B"
 
 const CODE_ANALYSE_DES_DONNEES string = "SINB44B"
-const CODE_ARCHITECTURES_JEE_IDL string = "SINB44DL : Architectures JEE$"
-const CODE_ARCHITECTURES_JEE_SID string = `SINB44DL : Architectures JEE \(M1-SID\)$`
+const CODE_ARCHITECTURES_JEE_IDL string = "SINB44DL : Architectures JEE$|SINB44DL : Architectures JEE avec les M1 et M1 SID$"
+const CODE_ARCHITECTURES_JEE_SID string = `SINB44DL : Architectures JEE \(M1-SID\)$|SINB44DL : Architectures JEE avec les M1 SID$|SINB44DL : Architectures JEE M1 SID$|SINB44DL : Architectures JEE avec les M1 et M1 SID$`
 const CODE_ANGLAIS_DE_INFORMATIQUE string = "SINB35B"
 const CODE_ALGORITHMES_A_PERFORMANCES_GARANTIES string = "SINB33B"
 const CODE_ANALYSE_DE_PROGRAMMES string = "SINB33G"
