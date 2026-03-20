@@ -27,3 +27,5 @@ cd src
 go build -o out
 ./out 
 ```
+
+Un dockerfile est également disponible.
