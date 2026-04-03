@@ -94,18 +94,23 @@ func filterCalendar(
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_PROGRAMMATION_GRAPHIQUE)
 		case "apro":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ANALYSE_DE_PROGRAMMES)
+			specialCasesExamRegex = append(specialCasesExamRegex, CODE_EXAM_MODEL_GRAPHIQUE_ANALYSE_DE_PROG)
 		case "mgm":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_MODELISATION_GEOMETRIQUE_ET_MAILLAGES)
+			specialCasesExamRegex = append(specialCasesExamRegex, CODE_EXAM_MODEL_GRAPHIQUE_ANALYSE_DE_PROG)
 		case "tal":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_TRAITEMENT_AUTOMATIQUE_DES_LANGUES)
 		case "apg":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ALGORITHMES_A_PERFORMANCES_GARANTIES)
 		case "cloud":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_DES_CONTENEURS_AU_CLOUD)
+			specialCasesExamRegex = append(specialCasesExamRegex, CODE_EXAM_CLOUD_IDD)
 		case "idd":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_INTEGRATION_DES_DONNEES)
+			specialCasesExamRegex = append(specialCasesExamRegex, CODE_EXAM_CLOUD_IDD)
 		case "tsg":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_THEORIE_STRUCTURELLE_DES_GRAPHES)
+			specialCasesExamRegex = append(specialCasesExamRegex, CODE_EXAM_SURFACE_FORME_LIBRE_TSG)
 		case "calc":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_CALCULABILITE_AVANCEE)
 		case "mrd":
