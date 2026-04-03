@@ -38,7 +38,7 @@ func filterCalendar(
 			eventToRemoveRegex = append(eventToRemoveRegex, codes...)
 		}
 
-		if codes, exists := mentionToCodesMap[string(mention)]; exists {
+		if codes, exists := mentionSpecialCases[string(mention)]; exists {
 			specialCasesExamRegex = append(specialCasesExamRegex, codes...)
 		}
 	}
