@@ -20,8 +20,9 @@ func filterCalendar(
 	startDate time.Time,
 	endDate time.Time) ics.Calendar {
 
-	// Create a regex expression to remove undesired events
+	// Create a regex expression to remove undesired events and add special cases for exams
 	var eventToRemoveRegex []string
+	var specialCasesExamRegex []string
 
 	// Check if calendar has been fetched
 	if cal == nil {
@@ -35,6 +36,10 @@ func filterCalendar(
 	for _, mention := range mentions {
 		if codes, exists := mentionToCodesMap[string(mention)]; exists {
 			eventToRemoveRegex = append(eventToRemoveRegex, codes...)
+		}
+
+		if codes, exists := mentionToCodesMap[string(mention)]; exists {
+			specialCasesExamRegex = append(specialCasesExamRegex, codes...)
 		}
 	}
 
@@ -89,23 +94,18 @@ func filterCalendar(
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_PROGRAMMATION_GRAPHIQUE)
 		case "apro":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ANALYSE_DE_PROGRAMMES)
-			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_EXAM_MODEL_GRAPHIQUE_ANALYSE_DE_PROG)
 		case "mgm":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_MODELISATION_GEOMETRIQUE_ET_MAILLAGES)
-			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_EXAM_MODEL_GRAPHIQUE_ANALYSE_DE_PROG)
 		case "tal":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_TRAITEMENT_AUTOMATIQUE_DES_LANGUES)
 		case "apg":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_ALGORITHMES_A_PERFORMANCES_GARANTIES)
 		case "cloud":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_DES_CONTENEURS_AU_CLOUD)
-			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_EXAM_CLOUD_IDD)
 		case "idd":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_INTEGRATION_DES_DONNEES)
-			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_EXAM_CLOUD_IDD)
 		case "tsg":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_THEORIE_STRUCTURELLE_DES_GRAPHES)
-			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_EXAM_SURFACE_FORME_LIBRE_TSG)
 		case "calc":
 			eventToRemoveRegex = removeStringFromList(eventToRemoveRegex, CODE_CALCULABILITE_AVANCEE)
 		case "mrd":
@@ -131,6 +131,10 @@ func filterCalendar(
 	regexPattern := strings.Join(eventToRemoveRegex, "|")
 	fmt.Println(regexPattern)
 	regex, err := regexp.Compile(regexPattern)
+
+	specialCasesPattern := strings.Join(specialCasesExamRegex, "|")
+	fmt.Println(specialCasesPattern)
+	regexSpecialCases, err := regexp.Compile(specialCasesPattern)
 	if err != nil {
 		fmt.Println("Error compiling regex:", err)
 		return *ics.NewCalendar()
@@ -146,10 +150,17 @@ func filterCalendar(
 		if event.GetProperty(ics.ComponentProperty(ics.PropertySummary)) != nil {
 			summary := event.GetProperty(ics.ComponentProperty(ics.PropertySummary)).Value
 
-			// Handle special case for GLA
+			// Reformat titles for GLA courses
 			GLAregex, _ := regexp.Compile("TP [12] SINBU33DL: Genie logiciel avance")
 			if GLAregex.MatchString(summary) {
 				summary = strings.Replace(summary, "TP", "GRP", 1)
+			}
+
+			// Handle declared special cases
+			if regexSpecialCases.MatchString(summary) {
+				// Keep this event (it matches the special case pattern)
+				filteredCal.AddVEvent(event)
+				continue
 			}
 
 			if !regex.MatchString(summary) {
